@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        FamilyTree tree = new FamilyTree(5);
+        FamilyTree tree = new FamilyTree((short) 5);
 
         Human human1 = new Human("Sergey", "Nakozin", "Urievich", Gender.Male,
                                 LocalDate.of(1961, 3, 29), null, null, null, null);

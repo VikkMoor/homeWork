@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyTree {
-    private long id;
+    private short id;
     private short human_id;
     private List<Human> humanList;
 
-    public FamilyTree(long id) {
+    public FamilyTree(short id) {
         this.id = id;
         humanList = new ArrayList<>();
     }

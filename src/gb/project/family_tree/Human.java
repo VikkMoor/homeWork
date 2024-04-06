@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Human {
-    private long id;
+    private short id;
     private String first_name;
     private String last_name;
     private String patronymic;
@@ -31,11 +31,11 @@ public class Human {
 
 
 
-    public long getId() {
+    public short getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(short id) {
         this.id = id;
     }
 
