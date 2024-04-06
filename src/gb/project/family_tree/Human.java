@@ -12,12 +12,12 @@ public class Human {
     private Gender gender;
     private LocalDate dob, dod;
     private Human mother, father;
-    private List<Human> children;
+    private List<Human> childrenList;
 
 
     public Human(String first_name, String last_name, String patronymic,
                  Gender gender, LocalDate dob, LocalDate dod, Human mother,
-                 Human father, List<Human> children) {
+                 Human father) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.patronymic = patronymic;
@@ -26,7 +26,7 @@ public class Human {
         this.dod = dod;
         this.mother = mother;
         this.father = father;
-        this. children = new ArrayList<>();
+        this.childrenList = new ArrayList<>();
     }
 
 
@@ -103,22 +103,29 @@ public class Human {
         this.father = father;
     }
 
-    public List<Human> getChildren() {
-        return children;
+    public List<Human> getChildrenList() {
+        return childrenList;
     }
 
-    public void setChildren(List<Human> children) {
-        this.children = children;
+    public void setChildrenList(List<Human> childrenList) {
+        this.childrenList = childrenList;
+    }
+
+    public void Children() {
+        childrenList = new ArrayList<>();
+    }
+    public void addChild(Human human) {
+       childrenList.add(human);
     }
 
     public String getChildrenInfo(){
         StringBuilder people = new StringBuilder();
         people.append("Kids: ");
-        if (!children.isEmpty()){
-            people.append(children.get(0).getName());
-            for (int i = 1; i < children.size(); i++){
+        if (!childrenList.isEmpty()){
+            people.append(childrenList.get(0).getName());
+            for (int i = 1; i < childrenList.size(); i++){
                 people.append(", ");
-                people.append(children.get(i).getName());
+                people.append(childrenList.get(i).getName());
             }
 
         } else {
