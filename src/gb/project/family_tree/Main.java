@@ -1,10 +1,7 @@
 package gb.project.family_tree;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-import gb.project.family_tree.FamilyTree;
-import gb.project.family_tree.Human;
 
 public class Main {
     public static void main(String[] args) {
