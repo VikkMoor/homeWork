@@ -17,6 +17,8 @@ public class Main {
                                 LocalDate.of(1984, 1, 27), null, null, null);
         Human human5 = new Human("Semen", "Murzin", "Sergeevich", Gender.Male,
                                 LocalDate.of(2013, 11, 25), null, human4, human3);
+        Human human6 = new Human("Andrei", "Nakozin", "Sergeevich", Gender.Male,
+                                LocalDate.of(1985, 5, 4), null, human2, human1);
 
         tree.addHuman(human1);
         tree.addHuman(human2);
@@ -25,7 +27,9 @@ public class Main {
         tree.addHuman(human5);
 
         human1.addChild(human3);
+        human1.addChild(human6);
         human2.addChild(human3);
+        human2.addChild(human6);
         human3.addChild(human5);
         human4.addChild(human5);
 
