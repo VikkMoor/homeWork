@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyTree {
-    private short id;
+    private long id;
     private short human_id;
     private List<Human> humanList;
 
-    public FamilyTree(short id) {
+    public FamilyTree(long id) {
         this.id = id;
         humanList = new ArrayList<>();
     }
@@ -18,9 +18,21 @@ public class FamilyTree {
         humanList.add(human);
     }
 
-    public String getHumansInfo() {
 
-
+    @Override
+    public String toString() {
+        return getInfo();
     }
 
+    public String getInfo() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("In the tree ");
+        sb.append(humanList.size());
+        sb.append(" objects: \n");
+        for (Human human : humanList) {
+            sb.append(human);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

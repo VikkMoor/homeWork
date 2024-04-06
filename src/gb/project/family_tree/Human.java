@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Human {
-    private short id;
+    private long id;
     private String first_name;
     private String last_name;
     private String patronymic;
@@ -17,7 +17,7 @@ public class Human {
 
     public Human(String first_name, String last_name, String patronymic,
                  Gender gender, LocalDate dob, LocalDate dod, Human mother,
-                 Human father) {
+                 Human father, List<Human> children) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.patronymic = patronymic;
@@ -26,42 +26,16 @@ public class Human {
         this.dod = dod;
         this.mother = mother;
         this.father = father;
+        this. children = new ArrayList<>();
     }
 
 
-    public boolean addChild(Human child) {
-        if (!children.contains(child)) {
-            children.add(child);
-            return true;
-        }
-        return false;
-    }
 
-    public boolean addParent(Human parent) {
-        if (parent.getGender().equals(Gender.Male)) {
-            setFather(parent);
-        } else if (parent.getGender().equals(Gender.Female)) {
-            setMother(parent);
-        }
-        return true;
-    }
-
-    public List<Human> getParrents() {
-        List<Human> list = new ArrayList<>(2);
-        if (father != null) {
-            list.add(father);
-        }
-        if (mother != null) {
-            list.add(mother);
-        }
-        return list;
-    }
-
-    public short getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(short id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -135,5 +109,83 @@ public class Human {
 
     public void setChildren(List<Human> children) {
         this.children = children;
+    }
+
+    public String getChildrenInfo(){
+        StringBuilder people = new StringBuilder();
+        people.append("Kids: ");
+        if (!children.isEmpty()){
+            people.append(children.get(0).getName());
+            for (int i = 1; i < children.size(); i++){
+                people.append(", ");
+                people.append(children.get(i).getName());
+            }
+
+        } else {
+            people.append(" no kids.");
+        }
+        return people.toString();
+    };
+
+    public String getMotherInfo() {
+        String people = "mother: ";
+        if (mother != null) {
+            people += mother.getName(mother);
+        } else {
+            people += " Unknown";
+        }
+        return people;
+    }
+
+    public String getFatherInfo() {
+        String people = "father: ";
+        if (father != null) {
+            people += father.getName(father);
+        } else {
+            people += " Unknown";
+        }
+        return people;
+    }
+
+    private String getName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(first_name + " ");
+        sb.append(patronymic + " ");
+        sb.append(last_name);
+        return sb.toString();
+    }
+    private String getName(Human human) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(first_name + " ");
+        sb.append(patronymic + " ");
+        sb.append(last_name);
+        return sb.toString();
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("id: ");
+        sb.append(id);
+        sb.append(", name: ");
+        sb.append(first_name);
+        sb.append(", patronymic: ");
+        sb.append(patronymic);
+        sb.append(", last name: ");
+        sb.append(last_name);
+        sb.append(", gender: ");
+        sb.append(getGender());
+        sb.append(", birthday: ");
+        sb.append(getDob());
+        sb.append(", death day: ");
+        sb.append(getDod());
+        sb.append("\n");
+        sb.append(getMotherInfo());
+        sb.append("\n");
+        sb.append(getFatherInfo());
+        sb.append("\n");
+        sb.append(getChildrenInfo());
+        return sb.toString();
     }
 }
