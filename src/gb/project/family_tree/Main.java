@@ -20,7 +20,7 @@ public class Main {
         Human human6 = new Human("Andrei", "Nakozin", "Sergeevich", Gender.Male,
                                 LocalDate.of(1985, 5, 4), null, human2, human1);
         Human human7 = new Human("Anastasia", "Nakozina", "Igorevna", Gender.Female,
-                LocalDate.of(1989, 1, 21), null, null, null);
+                                LocalDate.of(1989, 1, 21), null, null, null);
         Human human8 = new Human("Eva", "Nakozina", "Andreevna", Gender.Female,
                                 LocalDate.of(2017, 12, 8), null, human7, human6);
         Human human9 = new Human("Miroslav", "Nakozin", "Andreevich", Gender.Male,
