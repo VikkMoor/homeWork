@@ -1,6 +1,7 @@
 package gb.project.family_tree;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,6 @@ public class Human {
         this.father = father;
         this.childrenList = new ArrayList<>();
     }
-
 
 
     public short getId() {
@@ -114,16 +114,17 @@ public class Human {
     public void Children() {
         childrenList = new ArrayList<>();
     }
+
     public void addChild(Human human) {
-       childrenList.add(human);
+        childrenList.add(human);
     }
 
-    public String getChildrenInfo(){
+    public String getChildrenInfo() {
         StringBuilder people = new StringBuilder();
         people.append("Kids: ");
-        if (!childrenList.isEmpty()){
+        if (!childrenList.isEmpty()) {
             people.append(childrenList.get(0).getName());
-            for (int i = 1; i < childrenList.size(); i++){
+            for (int i = 1; i < childrenList.size(); i++) {
                 people.append(", ");
                 people.append(childrenList.get(i).getName());
             }
@@ -132,7 +133,9 @@ public class Human {
             people.append(" no kids.");
         }
         return people.toString();
-    };
+    }
+
+    ;
 
     public String getMotherInfo() {
         String people = "mother: ";
@@ -161,12 +164,27 @@ public class Human {
         sb.append(last_name);
         return sb.toString();
     }
+
     private String getName(Human human) {
         StringBuilder sb = new StringBuilder();
         sb.append(first_name + " ");
         sb.append(patronymic + " ");
         sb.append(last_name);
         return sb.toString();
+    }
+
+
+    private int getPeriod(LocalDate dob, LocalDate dod) {
+        Period diff = Period.between(dob, dod);
+        return diff.getYears();
+    }
+
+    public int getAge() {
+        if (dod == null) {
+            return getPeriod(dob, LocalDate.now());
+        } else {
+            return getPeriod(dob, dod);
+        }
     }
 
 
@@ -183,11 +201,9 @@ public class Human {
         sb.append(last_name);
         sb.append(", gender: ");
         sb.append(getGender());
-        sb.append(", birthday: ");
-        sb.append(getDob());
-        sb.append(", death day: ");
-        sb.append(getDod());
-        sb.append("\n");
+        sb.append(", age: ");
+        sb.append(getAge());
+       sb.append("\n");
         sb.append(getMotherInfo());
         sb.append("\n");
         sb.append(getFatherInfo());
