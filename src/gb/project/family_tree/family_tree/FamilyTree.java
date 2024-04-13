@@ -1,4 +1,6 @@
-package gb.project.family_tree;
+package gb.project.family_tree.family_tree;
+
+import gb.project.family_tree.human.Human;
 
 import java.util.ArrayList;
 import java.util.List;

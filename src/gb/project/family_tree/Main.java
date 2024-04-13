@@ -1,5 +1,9 @@
 package gb.project.family_tree;
 
+import gb.project.family_tree.family_tree.FamilyTree;
+import gb.project.family_tree.human.Gender;
+import gb.project.family_tree.human.Human;
+
 import java.time.LocalDate;
 
 

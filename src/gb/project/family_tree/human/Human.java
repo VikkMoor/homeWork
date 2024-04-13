@@ -1,4 +1,4 @@
-package gb.project.family_tree;
+package gb.project.family_tree.human;
 
 import java.time.LocalDate;
 import java.time.Period;
